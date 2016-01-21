@@ -1,0 +1,12 @@
+Bullets_(each): 	7x3_px
+Blue_car:		47x24_px
+Green_truck:		54x37_px
+Red_car:		51x24_px
+Yellow_cab: 		60x24_px
+Player_animations: 	51x57_px_padding_3_px_each_10x17_px
+Background:		640x360_px
+Clouds:			581x77_px
+Effects:		640x360_px
+Ground:			640x24_px
+Towers_back:		640x304_px
+Towers_front:		640x300_px
