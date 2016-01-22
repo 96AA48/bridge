@@ -10,5 +10,7 @@ class Ground extends Entity {
       setHitbox(HXP.width, 6);
       originY = -6;
       graphic = Image.createRect(HXP.width, 24, 0x5A5A5A);
+
+      type = "ground";
   }
 }

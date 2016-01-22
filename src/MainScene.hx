@@ -9,13 +9,15 @@ import controllers.CarSpawner;
 
 import entities.Player;
 import entities.Ground;
+import entities.Physics;
 
 class MainScene extends Scene
 {
 	public override function begin()
 	{
-		/*add(new Player());*/
-		add(new CarSpawner());
+		/*add(new Physics());*/
+		add(new Player());
+		/*add(new CarSpawner());*/
 
 		add(new Clouds());
 		add(new TowerBackdrop());

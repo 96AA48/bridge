@@ -1,15 +1,17 @@
 package entities;
 
-import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 
-class Player extends Entity {
+import entities.Physics;
+
+class Player extends Physics {
   public override function new() {
-    super(100, HXP.height - 20);
+    super(200, 200);
     sprite = new Spritemap("graphics/player_2.png", 10, 17);
+    layer = -1;
 
     sprite.add('idle', [0]);
     sprite.add('walking', [1, 2], 5);
@@ -22,6 +24,7 @@ class Player extends Entity {
   }
 
   public override function update() {
+    super.update();
     input();
   }
 
@@ -38,6 +41,10 @@ class Player extends Entity {
     }
     else {
       sprite.play('idle');
+    }
+
+    if (Input.check(Key.UP)) {
+      this.speedY = -2;
     }
   }
 

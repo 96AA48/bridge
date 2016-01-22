@@ -9,7 +9,7 @@ class Car extends Entity {
     super(0, 0);
     var side:Int = Math.floor(Math.random() * 1000);
     car = cars[Math.floor(Math.random() * cars.length)];
-    trace (side);
+
     this.y = HXP.height - 30;
     speed = Math.random() + 1;
 
