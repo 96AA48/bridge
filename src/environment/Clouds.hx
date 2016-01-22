@@ -1,4 +1,4 @@
-package entities;
+package environment;
 
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
