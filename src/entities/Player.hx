@@ -6,6 +6,7 @@ import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 
 import entities.Physics;
+import entities.Bullet;
 
 class Player extends Physics {
   public override function new() {
@@ -43,9 +44,17 @@ class Player extends Physics {
       sprite.play('idle');
     }
 
-    if (Input.check(Key.UP)) {
+    if (Input.pressed(Key.UP) && grounded) {
       this.speedY = -2;
     }
+
+    if (Input.pressed(Key.SPACE)) {
+      shoot();
+    }
+  }
+
+  private function shoot() {
+    HXP.scene.add(new Bullet(this.x, this.y + 4, sprite.flipped));
   }
 
   private var sprite:Spritemap;
