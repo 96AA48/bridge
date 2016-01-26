@@ -52,7 +52,7 @@ class Player extends Physics {
     }
 
     if (Input.pressed(Key.UP) && grounded) {
-      this.speedY = -2;
+      addForce(-2);
     }
 
     if (Input.pressed(Key.SPACE)) {
@@ -60,7 +60,7 @@ class Player extends Physics {
     }
 
     if (Input.pressed(Key.DOWN)) {
-      HXP.scene.add(new Bomb(this.x, this.y));
+      HXP.scene.add(new Bomb(this.x + 10, this.y + 4));
     }
   }
 

@@ -20,7 +20,7 @@ class Physics extends Entity {
     if (!grounded) speedY += (9.81 * HXP.elapsed);
     if (!grounded && collide("ground", this.x, this.y) != null) {
       grounded = true;
-      
+
       if (bouncy && speedY > 1) speedY /= -3
       else speedY = 0;
     }
@@ -30,6 +30,10 @@ class Physics extends Entity {
     }
 
     this.y += speedY;
+  }
+
+  public function addForce(force:Float) {
+    this.speedY += force;
   }
 
   public var grounded:Bool = false;

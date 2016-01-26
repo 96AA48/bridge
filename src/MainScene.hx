@@ -10,6 +10,7 @@ import controllers.CarSpawner;
 import entities.Player;
 import entities.Ground;
 import entities.Physics;
+import entities.Car;
 
 class MainScene extends Scene
 {
@@ -17,7 +18,7 @@ class MainScene extends Scene
 	{
 		/*add(new Physics(100, 100));*/
 		add(new Player());
-		/*add(new CarSpawner());*/
+		add(new CarSpawner());
 
 		add(new Clouds());
 		add(new TowerBackdrop());

@@ -4,9 +4,11 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
 
-class Car extends Entity {
-  public override function new() {
-    super(0, 0);
+import entities.Physics;
+
+class Car extends Physics {
+  public override function new(?x:Float, ?y:Float) {
+    super(x, y);
     var side:Int = Math.floor(Math.random() * 1000);
     car = cars[Math.floor(Math.random() * cars.length)];
 
@@ -18,6 +20,8 @@ class Car extends Entity {
     graphic = sprite;
     this.layer = -1;
 
+    setHitboxTo(sprite);
+
 
     if (side < 500) {
       this.x = sprite.width * -1;
@@ -28,9 +32,12 @@ class Car extends Entity {
       this.y -= 10;
       this.layer = 0;
     }
+
+    type = "car";
   }
 
   public override function update() {
+    super.update();
     if (sprite.flipped == true) {
       this.x += speed;
     }
