@@ -13,7 +13,7 @@ class CarSpawner extends Entity {
       if (timePassed > nextTime) {
         HXP.scene.add(new Car());
         timePassed = 0;
-        nextTime = 1 + (Math.random() * 3);
+        nextTime = Math.random() * 2;
       }
     }
 

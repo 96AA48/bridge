@@ -21,12 +21,12 @@ class Tower extends Entity {
       56, 62
     ]);*/
 
-    mask = Polygon.createFromArray([
+    /*mask = Polygon.createFromArray([
         290, 172,
         350, 172,
         350, 178,
         290, 178
-    ]);
+    ]);*/
 
     type = "ground";
   }

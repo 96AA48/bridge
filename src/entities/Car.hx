@@ -3,6 +3,7 @@ package entities;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
+import com.haxepunk.masks.Polygon;
 
 import entities.Physics;
 
@@ -13,14 +14,22 @@ class Car extends Physics {
     car = cars[Math.floor(Math.random() * cars.length)];
 
     this.y = HXP.height - 30;
-    speed = Math.random() + 1;
+    speed = Math.random() + 5;
 
     sprite = new Image("graphics/" + car + ".png");
     if (car == "green_truck") this.y -= 13;
     graphic = sprite;
     this.layer = -1;
 
-    setHitboxTo(sprite);
+    mask = Polygon.createFromArray([
+        -sprite.width / 2, -sprite.height / 2,
+        sprite.width / 2, -sprite.height / 2,
+        sprite.width / 2, sprite.height / 2,
+        -sprite.width / 2, sprite.height / 2,
+    ]);
+
+    centerOrigin();
+    sprite.centerOrigin();
 
 
     if (side < 500) {
@@ -42,11 +51,13 @@ class Car extends Physics {
 
   public override function update() {
     super.update();
-    if (sprite.flipped == true) {
-      this.x += speed;
-    }
-    else {
-      this.x -= speed;
+    if (alive) {
+      if (sprite.flipped == true) {
+        this.x += speed;
+      }
+      else {
+        this.x -= speed;
+      }
     }
 
     if (this.x > HXP.width + sprite.width + 1 || this.x + sprite.width < 0) {
@@ -55,6 +66,11 @@ class Car extends Physics {
 
     if (angleDelta != null && !grounded) {
       sprite.angle += angleDelta * HXP.elapsed;
+      cast(this.mask, Polygon).angle = sprite.angle;
+      speed -= 0.5 * HXP.elapsed;
+    }
+    else if (sprite.angle > 10 && grounded) {
+      active = false;
     }
   }
 
@@ -68,4 +84,5 @@ class Car extends Physics {
   ];
   private var speed:Float;
   private var angleDelta:Float;
+  private var alive:Bool = true;
 }

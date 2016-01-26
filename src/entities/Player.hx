@@ -12,7 +12,7 @@ import entities.Bomb;
 
 class Player extends Physics {
   public override function new() {
-    super(300, 200);
+    super(300, 100);
     sprite = new Spritemap("graphics/player_2.png", 10, 17);
     layer = -1;
     type = "player";
@@ -30,7 +30,7 @@ class Player extends Physics {
   }
 
   public override function update() {
-    super.update();
+    /*super.update();*/
     input();
 
     waitIdle -= HXP.elapsed;

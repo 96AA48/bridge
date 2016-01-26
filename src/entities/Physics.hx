@@ -3,6 +3,7 @@ package entities;
 import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.Sfx;
 
 class Physics extends Entity {
   public override function new(x:Float, y:Float) {
@@ -17,7 +18,10 @@ class Physics extends Entity {
     if (!grounded && collide("ground", this.x, this.y) != null) {
       grounded = true;
 
-      if (bouncy && speedY > 1) speedY /= -3
+      if (bouncy && speedY > 1)  {
+        speedY /= -3;
+        bounce.play(1);
+      }
       else speedY = 0;
     }
 
@@ -33,6 +37,9 @@ class Physics extends Entity {
   }
 
   public var grounded:Bool = false;
+
+  private var bounce:Sfx = new Sfx("audio/bounce.wav");
+
   private var bouncy:Bool = false;
   private var speedY:Float = -2;
 }

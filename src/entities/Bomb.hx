@@ -2,6 +2,7 @@ package entities;
 
 import com.haxepunk.graphics.Image;
 import com.haxepunk.HXP;
+import com.haxepunk.Sfx;
 
 import entities.Physics;
 
@@ -12,11 +13,15 @@ class Bomb extends Physics {
     sprite = Image.createCircle(3, 0xFF0000);
     explode_sprite = Image.createCircle(3, 0x00FF00);
     graphic = sprite;
+
     setHitboxTo(sprite);
-    bouncy = true;
     centerOrigin();
     sprite.centerOrigin();
     explode_sprite.centerOrigin();
+
+    bouncy = true;
+
+    activate.play(1);
   }
 
   public override function update() {
@@ -31,6 +36,8 @@ class Bomb extends Physics {
       HXP.scene.remove(this);
     }
   }
+  
+  private var activate:Sfx = new Sfx("audio/detonate.wav");
 
   private var explodeTime:Float = 2.5;
   private var sprite:Image;

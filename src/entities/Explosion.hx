@@ -4,6 +4,7 @@ import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.masks.Circle;
+import com.haxepunk.Sfx;
 
 class Explosion extends Entity {
   public override function new(x:Float, y:Float) {
@@ -20,6 +21,8 @@ class Explosion extends Entity {
     sprite.centerOrigin();
 
     type = "explosion";
+
+    explosion.play(1);
   }
 
   public override function update() {
@@ -29,7 +32,7 @@ class Explosion extends Entity {
     if (car != null) {
       var angle:Float = Math.atan2(this.x - car.x, this.y - car.y) * 180 / Math.PI;
       car.toAngle(angle);
-      car.addForce(-4);
+      car.addForce(-2);
 
     }
 
@@ -38,6 +41,8 @@ class Explosion extends Entity {
 
     if (sprite.scale > .5) HXP.scene.remove(this);
   }
+
+  private var explosion:Sfx = new Sfx("audio/explosion.wav");
 
   private var sprite:Image;
   private var hitbox:Circle;
