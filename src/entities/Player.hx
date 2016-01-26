@@ -8,6 +8,7 @@ import com.haxepunk.masks.Polygon;
 
 import entities.Physics;
 import entities.Bullet;
+import entities.Bomb;
 
 class Player extends Physics {
   public override function new() {
@@ -56,6 +57,10 @@ class Player extends Physics {
 
     if (Input.pressed(Key.SPACE)) {
       shoot();
+    }
+
+    if (Input.pressed(Key.DOWN)) {
+      HXP.scene.add(new Bomb(this.x, this.y));
     }
   }
 

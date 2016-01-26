@@ -6,14 +6,17 @@ import com.haxepunk.HXP;
 import entities.Physics;
 
 class Bomb extends Physics {
-  public override function new() {
-    super(180, 100);
+  public override function new(x:Float, y:Float) {
+    super(x, y);
 
     sprite = Image.createCircle(3, 0xFF0000);
     explode_sprite = Image.createCircle(3, 0x00FF00);
     graphic = sprite;
     setHitboxTo(sprite);
     bouncy = true;
+    centerOrigin();
+    sprite.centerOrigin();
+    explode_sprite.centerOrigin();
   }
 
   public override function update() {
@@ -24,7 +27,7 @@ class Bomb extends Physics {
     else graphic = sprite;
 
     if (explodeTime <= 0) {
-      /*HXP.scene.add(new Explosion(this.x, this.y));*/
+      HXP.scene.add(new Explosion(this.x, this.y));
       HXP.scene.remove(this);
     }
   }
