@@ -16,6 +16,7 @@ class Physics extends Entity {
 
   public override function update() {
     super.update();
+
     if (!grounded) speedY += (9.81 * HXP.elapsed);
     if (!grounded && collide("ground", this.x, this.y) != null) {
       trace('Got the ground');
