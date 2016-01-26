@@ -36,6 +36,10 @@ class Car extends Physics {
     type = "car";
   }
 
+  public function toAngle(angle:Float) {
+    angleDelta = angle;
+  }
+
   public override function update() {
     super.update();
     if (sprite.flipped == true) {
@@ -48,6 +52,10 @@ class Car extends Physics {
     if (this.x > HXP.width + sprite.width + 1 || this.x + sprite.width < 0) {
       HXP.scene.remove(this);
     }
+
+    if (angleDelta != null && !grounded) {
+      sprite.angle += angleDelta * HXP.elapsed;
+    }
   }
 
   private var sprite:Image;
@@ -59,4 +67,5 @@ class Car extends Physics {
     "yellow_cab"
   ];
   private var speed:Float;
+  private var angleDelta:Float;
 }

@@ -25,8 +25,13 @@ class Explosion extends Entity {
   public override function update() {
     super.update();
 
-    var collide:Dynamic = collide("car", this.x, this.y);
-    if (collide != null) collide.addForce(-4);
+    var car:Dynamic = collide("car", this.x, this.y);
+    if (car != null) {
+      var angle:Float = Math.atan2(this.x - car.x, this.y - car.y) * 180 / Math.PI;
+      car.toAngle(angle);
+      car.addForce(-4);
+
+    }
 
     sprite.scale += .1;
     hitbox.radius += 20;

@@ -4,13 +4,9 @@ import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 
-import entities.Ground;
-
 class Physics extends Entity {
   public override function new(x:Float, y:Float) {
     super(x, y);
-    setHitbox(25, 25);
-    graphic = Image.createRect(25, 25, 0xFF0000);
     layer = -1 ;
   }
 
