@@ -10,7 +10,7 @@ class Tower extends Entity {
     graphic = new Image("graphics/towers_front.png");
     this.layer = -2;
 
-    var poly:Polygon = Polygon.createFromArray([
+    /*var poly:Polygon = Polygon.createFromArray([
       56, 56,
       290, 172,
       350, 172,
@@ -19,9 +19,14 @@ class Tower extends Entity {
       355, 178,
       284, 178,
       56, 62
-      ]);
+    ]);*/
 
-    mask = poly;
+    mask = Polygon.createFromArray([
+        290, 172,
+        350, 172,
+        350, 178,
+        290, 178
+    ]);
 
     type = "ground";
   }

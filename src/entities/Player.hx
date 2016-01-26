@@ -11,11 +11,11 @@ import entities.Bullet;
 
 class Player extends Physics {
   public override function new() {
-    super(200, 200);
+    super(300, 200);
     sprite = new Spritemap("graphics/player_2.png", 10, 17);
     layer = -1;
     type = "player";
-    
+
     setHitbox(10, 17);
 
     sprite.add('idle', [0]);

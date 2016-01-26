@@ -19,13 +19,13 @@ class Physics extends Entity {
 
     if (!grounded) speedY += (9.81 * HXP.elapsed);
     if (!grounded && collide("ground", this.x, this.y) != null) {
-      trace('Got the ground');
       grounded = true;
-      speedY = 0;
+      
+      if (bouncy && speedY > 1) speedY /= -3
+      else speedY = 0;
     }
 
     if (grounded && collide("ground", this.x, this.y) == null) {
-      trace('Fly my bredren');
       grounded = false;
     }
 
@@ -33,5 +33,6 @@ class Physics extends Entity {
   }
 
   public var grounded:Bool = false;
-  private var speedY:Float = -9;
+  private var bouncy:Bool = false;
+  private var speedY:Float = -2;
 }
