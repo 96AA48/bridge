@@ -40,13 +40,13 @@ class Player extends Physics {
   private function input() {
     if (Input.check(Key.LEFT)) {
       if (sprite.currentAnim != 'walking') sprite.play('walking');
-      if (this.x > 0) this.x -= 1;
+      if (this.x > 55) this.x -= 1;
       if (collide("bridge", this.x - 1, this.y) != null) this.y -= .5;
       sprite.flipped = true;
     }
     else if (Input.check(Key.RIGHT)) {
       if (sprite.currentAnim != 'walking') sprite.play('walking');
-      if (this.x < HXP.width - 1) this.x += 1;
+      if (this.x < 580) this.x += 1;
       if (collide("bridge", this.x + 1, this.y) != null) this.y -= .5;
       sprite.flipped = false;
     }
