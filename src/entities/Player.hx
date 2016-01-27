@@ -26,6 +26,7 @@ class Player extends Physics {
 
     graphic = sprite;
 
+    bridgeable = true;
     sprite.play('idle');
   }
 
@@ -40,11 +41,13 @@ class Player extends Physics {
     if (Input.check(Key.LEFT)) {
       if (sprite.currentAnim != 'walking') sprite.play('walking');
       if (this.x > 0) this.x -= 1;
+      if (collide("bridge", this.x - 1, this.y) != null) this.y -= .5;
       sprite.flipped = true;
     }
     else if (Input.check(Key.RIGHT)) {
       if (sprite.currentAnim != 'walking') sprite.play('walking');
       if (this.x < HXP.width - 1) this.x += 1;
+      if (collide("bridge", this.x + 1, this.y) != null) this.y -= .5;
       sprite.flipped = false;
     }
     else {

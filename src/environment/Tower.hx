@@ -30,7 +30,7 @@ class Tower extends Entity {
       350, 178
     ])]);
 
-    type = "ground";
+    type = "bridge";
   }
 
   public override function update() {

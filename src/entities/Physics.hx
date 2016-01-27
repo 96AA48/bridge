@@ -29,6 +29,22 @@ class Physics extends Entity {
       grounded = false;
     }
 
+    if (bridgeable) {
+      if (!grounded && collide("bridge", this.x, this.y) != null) {
+        grounded = true;
+
+        if (bouncy && speedY > 1)  {
+          speedY /= -3;
+          bounce.play(1);
+        }
+        else speedY = 0;
+      }
+
+      if (grounded && collide("bridge", this.x, this.y) == null) {
+        grounded = false;
+      }
+    }
+
     this.y += speedY;
   }
 
@@ -37,6 +53,7 @@ class Physics extends Entity {
   }
 
   public var grounded:Bool = false;
+  public var bridgeable:Bool = false;
 
   private var bounce:Sfx = new Sfx("audio/bounce.wav");
 
