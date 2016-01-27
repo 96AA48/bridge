@@ -13,11 +13,11 @@ class Car extends Physics {
     var side:Int = Math.floor(Math.random() * 1000);
     car = cars[Math.floor(Math.random() * cars.length)];
 
-    this.y = HXP.height - 30;
+    this.y = HXP.height - 10;
     speed = Math.random() + 5;
 
     sprite = new Image("graphics/" + car + ".png");
-    if (car == "green_truck") this.y -= 13;
+    if (car == "green_truck") this.y -= 5;
     graphic = sprite;
     this.layer = -1;
 
