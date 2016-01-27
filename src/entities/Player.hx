@@ -30,7 +30,7 @@ class Player extends Physics {
   }
 
   public override function update() {
-    /*super.update();*/
+    super.update();
     input();
 
     waitIdle -= HXP.elapsed;

@@ -70,7 +70,7 @@ class Car extends Physics {
       speed -= 0.5 * HXP.elapsed;
     }
     else if (sprite.angle > 10 && grounded) {
-      active = false;
+      alive = false;
     }
   }
 
