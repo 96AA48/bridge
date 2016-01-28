@@ -14,7 +14,7 @@ class Physics extends Entity {
   public override function update() {
     super.update();
 
-    if (!grounded) speedY += (9.81 * HXP.elapsed);
+    if (!grounded && !bridged) speedY += (9.81 * HXP.elapsed);
     if (!grounded && collide("ground", this.x, this.y) != null) {
       grounded = true;
 
@@ -30,8 +30,8 @@ class Physics extends Entity {
     }
 
     if (bridgeable) {
-      if (!grounded && collide("bridge", this.x, this.y) != null) {
-        grounded = true;
+      if (!bridged && collide("bridge", this.x, this.y) != null) {
+        bridged = true;
 
         if (bouncy && speedY > 1)  {
           speedY /= -3;
@@ -40,8 +40,8 @@ class Physics extends Entity {
         else speedY = 0;
       }
 
-      if (grounded && collide("bridge", this.x, this.y) == null) {
-        grounded = false;
+      if (collide("bridge", this.x, this.y) == null) {
+        bridged = false;
       }
     }
 
@@ -53,6 +53,7 @@ class Physics extends Entity {
   }
 
   public var grounded:Bool = false;
+  public var bridged:Bool = false;
   public var bridgeable:Bool = false;
 
   private var bounce:Sfx = new Sfx("audio/bounce.wav");

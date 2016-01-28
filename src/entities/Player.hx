@@ -34,6 +34,9 @@ class Player extends Physics {
     super.update();
     input();
 
+    if (bridgeDelta > 0) bridgeable = false;
+
+    bridgeDelta -= HXP.elapsed;
     waitIdle -= HXP.elapsed;
   }
 
@@ -54,7 +57,7 @@ class Player extends Physics {
       if (waitIdle < 0) sprite.play('idle');
     }
 
-    if (Input.pressed(Key.UP) && grounded) {
+    if (Input.pressed(Key.UP) && (grounded || bridged)) {
       addForce(-2);
     }
 
@@ -64,6 +67,10 @@ class Player extends Physics {
 
     if (Input.pressed(Key.DOWN)) {
       HXP.scene.add(new Bomb(this.x + 10, this.y + 4));
+    }
+
+    if (collide('car', this.x, this.y) != null && this.y < 240 && bridgeDelta <= 0) {
+      fall();
     }
   }
 
@@ -76,6 +83,13 @@ class Player extends Physics {
     /*}*/
   }
 
+  private function fall() {
+    addForce(-4);
+    bridgeDelta = 1.5;
+    bridged = false;
+  }
+
+  private var bridgeDelta:Float = 0;
   private var sprite:Spritemap;
   private var waitIdle:Float = .5;
 }
