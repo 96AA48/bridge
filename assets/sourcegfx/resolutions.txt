@@ -11,3 +11,4 @@ Effects:		640x360_px
 Ground:			640x24_px
 Towers_back:		640x304_px
 Towers_front:		640x300_px
+Esplosion:		250x50_px
