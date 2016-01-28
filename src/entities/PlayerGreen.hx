@@ -45,13 +45,13 @@ class PlayerGreen extends Player {
       speedY = 0;
     }
 
-    /*if (Input.pressed(Key.UP) && (grounded || bridged)) {
+    if (Input.pressed(Key.UP) && (grounded || bridged)) {
       jump();
-    }*/
-
-    if (Input.pressed(Key.SPACE)) {
-      shoot();
     }
+
+    /*if (Input.pressed(Key.SPACE)) {
+      shoot();
+    }*/
 
     if (Input.pressed(Key.DOWN)) {
       bomb();

@@ -36,7 +36,7 @@ class Bomb extends Physics {
       HXP.scene.remove(this);
     }
   }
-  
+
   private var activate:Sfx = new Sfx("audio/detonate.wav");
 
   private var explodeTime:Float = 2.5;
