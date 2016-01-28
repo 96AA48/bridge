@@ -9,7 +9,7 @@ class Cable extends Entity {
 
     graphic = Image.createRect(3, 220, 0xFFF000);
     setHitboxTo(graphic);
-    
+
     type = "cable";
   }
 }

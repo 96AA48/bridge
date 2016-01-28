@@ -11,28 +11,18 @@ import entities.Bullet;
 import entities.Bomb;
 
 class Player extends Physics {
-  public override function new() {
-    super(300, 100);
-    sprite = new Spritemap("graphics/player_2.png", 10, 17);
-    layer = -1;
-    type = "player";
-
-    setHitbox(10, 17);
-
-    sprite.add('idle', [0]);
-    sprite.add('walking', [1, 2], 5);
-    sprite.add('shooting_walking', [3, 4], 5);
-    sprite.add('shooting', [5]);
-
-    graphic = sprite;
+  public override function new(x:Float, y:Float) {
+    super(x, y);
 
     bridgeable = true;
-    sprite.play('idle');
+
+    type = "player";
   }
 
   public override function update() {
     super.update();
-    input();
+
+    if (collide('car', this.x, this.y) != null && this.y < 240 && bridgeDelta <= 0) fall();
 
     if (bridgeDelta > 0) bridgeable = false;
     else bridgeable = true;
@@ -41,43 +31,22 @@ class Player extends Physics {
     waitIdle -= HXP.elapsed;
   }
 
-  private function input() {
-    if (Input.check(Key.LEFT)) {
-      if (sprite.currentAnim != 'walking') sprite.play('walking');
-      if (this.x > 55) this.x -= 1;
-      if (collide("bridge", this.x - 1, this.y) != null) this.y -= .5;
-      sprite.flipped = true;
-    }
-    else if (Input.check(Key.RIGHT)) {
-      if (sprite.currentAnim != 'walking') sprite.play('walking');
-      if (this.x < 580) this.x += 1;
-      if (collide("bridge", this.x + 1, this.y) != null) this.y -= .5;
-      sprite.flipped = false;
-    }
-    else {
-      if (waitIdle < 0) sprite.play('idle');
-    }
+  private function bomb() {
+    HXP.scene.add(new Bomb(this.x + 10, this.y + 4));
+  }
 
-    if (collide('cable', this.x, this.y) != null && Input.check(Key.UP)) {
-      this.y -= 2;
-      speedY = 0;
-    }
+  private function walkLeft() {
+    if (sprite.currentAnim != 'walking') sprite.play('walking');
+    if (this.x > 55) this.x -= 1;
+    if (collide("bridge", this.x - 1, this.y) != null) this.y -= .5;
+    sprite.flipped = true;
+  }
 
-    if (Input.pressed(Key.UP) && (grounded || bridged)) {
-      addForce(-2);
-    }
-
-    if (Input.pressed(Key.SPACE)) {
-      shoot();
-    }
-
-    if (Input.pressed(Key.DOWN)) {
-      HXP.scene.add(new Bomb(this.x + 10, this.y + 4));
-    }
-
-    if (collide('car', this.x, this.y) != null && this.y < 240 && bridgeDelta <= 0) {
-      fall();
-    }
+  private function walkRight() {
+    if (sprite.currentAnim != 'walking') sprite.play('walking');
+    if (this.x < 580) this.x += 1;
+    if (collide("bridge", this.x + 1, this.y) != null) this.y -= .5;
+    sprite.flipped = false;
   }
 
   private function shoot() {
@@ -93,6 +62,10 @@ class Player extends Physics {
     addForce(-4);
     bridgeDelta = 1.5;
     bridged = false;
+  }
+
+  private function jump() {
+    addForce(-2);
   }
 
   private var bridgeDelta:Float = 0;

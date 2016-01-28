@@ -7,17 +7,17 @@ import environment.TowerBackdrop;
 
 import controllers.CarSpawner;
 
-import entities.Player;
+import entities.PlayerRed;
+import entities.PlayerGreen;
 import entities.Ground;
-import entities.Physics;
-import entities.Car;
 
 class MainScene extends Scene
 {
 	public override function begin()
 	{
-		/*add(new Physics(100, 100));*/
-		add(new Player());
+		add(new PlayerGreen());
+		add(new PlayerRed());
+
 		add(new CarSpawner());
 
 		add(new Clouds());
