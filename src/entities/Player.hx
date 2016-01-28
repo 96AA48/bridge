@@ -35,6 +35,7 @@ class Player extends Physics {
     input();
 
     if (bridgeDelta > 0) bridgeable = false;
+    else bridgeable = true;
 
     bridgeDelta -= HXP.elapsed;
     waitIdle -= HXP.elapsed;
@@ -55,6 +56,11 @@ class Player extends Physics {
     }
     else {
       if (waitIdle < 0) sprite.play('idle');
+    }
+
+    if (collide('cable', this.x, this.y) != null && Input.check(Key.UP)) {
+      this.y -= 2;
+      speedY = 0;
     }
 
     if (Input.pressed(Key.UP) && (grounded || bridged)) {
