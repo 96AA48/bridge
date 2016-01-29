@@ -22,6 +22,8 @@ class Bomb extends Physics {
     bouncy = true;
 
     activate.play(1);
+
+    type = "bomb";
   }
 
   public override function update() {
