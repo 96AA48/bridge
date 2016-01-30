@@ -33,16 +33,21 @@ class Player extends Physics {
 
   private function walkLeft() {
     if (sprite.currentAnim != 'walking') sprite.play('walking');
-    if (this.x > 55) this.x -= 1;
-    if (collide("bridge", this.x - 1, this.y) != null) this.y -= .5;
-    sprite.flipped = true;
+
+    if (this.x > 55 && collide("barrier", this.x - 1, this.y) == null) {
+      this.x -= 1;
+      if (collide("bridge", this.x - 1, this.y) != null) this.y -= .5;
+      sprite.flipped = true;
+    }
   }
 
   private function walkRight() {
     if (sprite.currentAnim != 'walking') sprite.play('walking');
-    if (this.x < 580) this.x += 1;
-    if (collide("bridge", this.x + 1, this.y) != null) this.y -= .5;
-    sprite.flipped = false;
+    if (this.x < 580 && collide("barrier", this.x + 1, this.y) == null) {
+      this.x += 1;
+      if (collide("bridge", this.x + 1, this.y) != null) this.y -= .5;
+      sprite.flipped = false;
+    } 
   }
 
   private function shoot() {

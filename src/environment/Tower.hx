@@ -7,6 +7,7 @@ import com.haxepunk.masks.Polygon;
 import com.haxepunk.masks.Masklist;
 
 import entities.Cable;
+import entities.Barrier;
 
 class Tower extends Entity {
   public override function new() {
@@ -48,6 +49,8 @@ class Tower extends Entity {
     HXP.scene.add(new Cable(433, 67));
     HXP.scene.add(new Cable(400, 83));
     HXP.scene.add(new Cable(367, 98));
+
+    HXP.scene.add(new Barrier());
 
     type = "bridge";
   }
