@@ -3,6 +3,7 @@ package entities;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Spritemap;
+import com.haxepunk.HXP;
 
 import entities.Player;
 
@@ -27,6 +28,11 @@ class PlayerGreen extends Player {
     super.update();
 
     input();
+  }
+
+
+  private function bomb() {
+    HXP.scene.add(new Bomb(this.x + 10, this.y + 4, 1));
   }
 
   private function input() {

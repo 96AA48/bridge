@@ -31,10 +31,6 @@ class Player extends Physics {
     waitIdle -= HXP.elapsed;
   }
 
-  private function bomb() {
-    HXP.scene.add(new Bomb(this.x + 10, this.y + 4));
-  }
-
   private function walkLeft() {
     if (sprite.currentAnim != 'walking') sprite.play('walking');
     if (this.x > 55) this.x -= 1;

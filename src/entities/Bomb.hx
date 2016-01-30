@@ -7,11 +7,17 @@ import com.haxepunk.Sfx;
 import entities.Physics;
 
 class Bomb extends Physics {
-  public override function new(x:Float, y:Float) {
+  public override function new(x:Float, y:Float, player:Int) {
     super(x, y);
+    sprite = Image.createCircle(3, 0x000000);
 
-    sprite = Image.createCircle(3, 0xFF0000);
-    explode_sprite = Image.createCircle(3, 0x00FF00);
+    if (player == 1) {
+      explode_sprite = Image.createCircle(3, 0x00FF00);
+    }
+    else {
+      explode_sprite = Image.createCircle(3, 0xFF0000);
+    }
+
     graphic = sprite;
 
     setHitboxTo(sprite);
