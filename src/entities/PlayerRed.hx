@@ -62,9 +62,5 @@ class PlayerRed extends Player {
     if (Input.pressed(Key.S)) {
       bomb();
     }
-
-    if (collide('car', this.x, this.y) != null && this.y < 240 && bridgeDelta <= 0) {
-      fall();
-    }
   }
 }
