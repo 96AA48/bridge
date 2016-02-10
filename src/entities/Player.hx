@@ -2,6 +2,7 @@ package entities;
 
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Spritemap;
+import com.haxepunk.graphics.Text;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.masks.Polygon;
@@ -13,6 +14,8 @@ import entities.Bomb;
 class Player extends Physics {
   public override function new(x:Float, y:Float) {
     super(x, y);
+
+    healthMarker = new Text(health + '', 1, -18, null, null, {color: 0xFFFFFF, size: 14});
 
     bridgeable = true;
 
@@ -69,7 +72,8 @@ class Player extends Physics {
   public function hurt() {
     this.health -= 1;
     invulnarable = 2;
-    trace('Got hurt');
+
+    healthMarker.text = health + '';
   }
 
   private function fall() {
@@ -84,6 +88,7 @@ class Player extends Physics {
 
   public var health:Int = 3;
   public var invulnarable:Float = 0;
+  private var healthMarker:Text;
   private var bridgeDelta:Float = 0;
   private var sprite:Spritemap;
   private var waitIdle:Float = .5;

@@ -20,7 +20,9 @@ class PlayerRed extends Player {
     sprite.add('shooting_walking', [3, 4], 5);
     sprite.add('shooting', [5]);
 
-    graphic = sprite;
+    addGraphic(sprite);
+    addGraphic(healthMarker);
+
     sprite.play('idle');
   }
 
