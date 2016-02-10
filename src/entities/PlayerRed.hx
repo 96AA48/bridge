@@ -24,6 +24,8 @@ class PlayerRed extends Player {
     addGraphic(healthMarker);
 
     sprite.play('idle');
+
+    type = 'red';
   }
 
   public override function update() {

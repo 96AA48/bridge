@@ -1,3 +1,5 @@
+package scenes;
+
 import com.haxepunk.Scene;
 
 import environment.Clouds;
@@ -11,7 +13,7 @@ import entities.PlayerRed;
 import entities.PlayerGreen;
 import entities.Ground;
 
-class MainScene extends Scene
+class BridgeScene extends Scene
 {
 	public override function begin()
 	{

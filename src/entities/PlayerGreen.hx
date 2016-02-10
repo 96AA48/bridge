@@ -24,6 +24,7 @@ class PlayerGreen extends Player {
     addGraphic(healthMarker);
 
     sprite.play('idle');
+    type = 'green';
   }
 
   public override function update() {
@@ -57,11 +58,7 @@ class PlayerGreen extends Player {
       jump();
     }
 
-    /*if (Input.pressed(Key.SPACE)) {
-      shoot();
-    }*/
-
-    if (Input.pressed(Key.DOWN)) {
+    if (Input.check(Key.DOWN)) {
       bomb();
     }
   }

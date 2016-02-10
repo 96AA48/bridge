@@ -11,6 +11,8 @@ import entities.Physics;
 import entities.Bullet;
 import entities.Bomb;
 
+import scenes.EndScene;
+
 class Player extends Physics {
   public override function new(x:Float, y:Float) {
     super(x, y);
@@ -18,8 +20,6 @@ class Player extends Physics {
     healthMarker = new Text(health + '', 1, -18, null, null, {color: 0xFFFFFF, size: 14});
 
     bridgeable = true;
-
-    type = "player";
   }
 
   public override function update() {
@@ -36,9 +36,18 @@ class Player extends Physics {
     if (invulnarable > 0 && invulnarable % .5 < .2) sprite.alpha = 0;
     else sprite.alpha = 1;
 
+    if (health == 0) {
+      die();
+    }
+
     bridgeDelta -= HXP.elapsed;
     waitIdle -= HXP.elapsed;
     invulnarable -= HXP.elapsed;
+  }
+
+  private function die() {
+    trace(this.type);
+    HXP.scene = new EndScene(this.type);
   }
 
   private function walkLeft() {
