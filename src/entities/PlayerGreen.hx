@@ -58,7 +58,7 @@ class PlayerGreen extends Player {
       jump();
     }
 
-    if (Input.check(Key.DOWN)) {
+    if (Input.pressed(Key.DOWN)) {
       bomb();
     }
   }

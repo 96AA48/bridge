@@ -46,7 +46,6 @@ class Player extends Physics {
   }
 
   private function die() {
-    trace(this.type);
     HXP.scene = new EndScene(this.type);
   }
 

@@ -11,6 +11,7 @@ import controllers.CarSpawner;
 
 import entities.Ground;
 import entities.EndText;
+import entities.Restart;
 
 class EndScene extends Scene
 {
@@ -24,6 +25,7 @@ class EndScene extends Scene
 	public override function begin()
 	{
     add(new EndText(playerWon));
+    add(new Restart());
 		add(new CarSpawner());
 
 		add(new Clouds());

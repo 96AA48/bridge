@@ -8,12 +8,12 @@ import com.haxepunk.HXP;
 class EndText extends Entity {
   public override function new(playerWon:String) {
     super(0, 0);
-    
-    //FIXME: Fix the colors
-    if (playerWon == 'red') wonColor = 0xFF0000;
-    else wonColor = 0x0000FF;
 
-    var text:Text = new Text('Player ' + playerWon + '\n has won the game!', null, null, null, null, {size: 50, color: wonColor, align: 'center'});
+    //FIXME: Fix the colors
+    /*if (playerWon == 'red') wonColor = 0xAC1700;
+    else wonColor = 0x00AC38;*/
+
+    var text:Text = new Text('Player ' + playerWon + '\n has won the game!', null, null, null, null, {size: 50, color: 0xFFFFFF, align: 'center'});
     layer = -10;
 
     text.centerOrigin();
