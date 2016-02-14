@@ -6,6 +6,7 @@ import com.haxepunk.graphics.Text;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.masks.Polygon;
+import com.haxepunk.Sfx;
 
 import entities.Physics;
 import entities.Bullet;
@@ -18,7 +19,7 @@ class Player extends Physics {
     super(x, y);
 
     healthMarker = new Text(health + '', 1, -18, null, null, {color: 0xFFFFFF, size: 14});
-
+    hurtSound = new Sfx('audio/hurt.wav');
     bridgeable = true;
   }
 
@@ -80,6 +81,8 @@ class Player extends Physics {
   public function hurt() {
     this.health -= 1;
     invulnarable = 2;
+    
+    hurtSound.play(0.3);
 
     healthMarker.text = health + '';
   }
@@ -100,4 +103,5 @@ class Player extends Physics {
   private var bridgeDelta:Float = 0;
   private var sprite:Spritemap;
   private var waitIdle:Float = .5;
+  private var hurtSound:Sfx;
 }
