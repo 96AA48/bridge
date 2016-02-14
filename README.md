@@ -1,7 +1,7 @@
 # Bridge
 ---
 
-`[Screenshot coming soon]`
+![The game it all it's glory](http://i.imgur.com/23PpSH6.gif)
 
 ---
 
