@@ -9,12 +9,12 @@ import com.haxepunk.utils.Key;
 
 import scenes.BridgeScene;
 
-class Restart extends Entity {
-  public override function new() {
+class Button extends Entity {
+  public override function new(txt:String) {
     super(HXP.halfWidth, HXP.halfHeight + 90);
 
-    text = new Text('Restart', null, null, null, null, {size: 40, color: 0xFFFFFF});
-    sprite = Image.createRect(200, 75, 0xAC1700);
+    text = new Text(txt, null, null, null, null, {size: 40, color: 0xFFFFFF});
+    sprite = Image.createRect(200, 65, 0xAC1700);
 
     text.centerOrigin();
     sprite.centerOrigin();

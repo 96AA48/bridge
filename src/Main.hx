@@ -1,7 +1,7 @@
 import com.haxepunk.Engine;
 import com.haxepunk.HXP;
 
-import scenes.BridgeScene;
+import scenes.StartScene;
 
 class Main extends Engine
 {
@@ -11,7 +11,7 @@ class Main extends Engine
 #if debug
 		HXP.console.enable();
 #end
-		HXP.scene = new BridgeScene();
+		HXP.scene = new StartScene();
 	}
 
 	public static function main() { new Main(); }

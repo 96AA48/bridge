@@ -13,19 +13,15 @@ import entities.Ground;
 import entities.EndText;
 import entities.Button;
 
-class EndScene extends Scene
+class StartScene extends Scene
 {
-  public override function new(playerLost:String) {
+  public override function new() {
     super();
-
-    if (playerLost == 'red') playerWon = 'Green';
-    else playerWon = 'Red';
   }
 
 	public override function begin()
 	{
-    add(new EndText(playerWon));
-    add(new Button('Restart'));
+    add(new Button('Start'));
 		add(new CarSpawner());
 
 		add(new Clouds());
@@ -34,6 +30,4 @@ class EndScene extends Scene
 		add(new Tower());
 		add(new Background());
 	}
-
-  private var playerWon:String;
 }
