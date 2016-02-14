@@ -9,7 +9,7 @@ import entities.Player;
 
 class PlayerGreen extends Player {
   public override function new() {
-    super(500, 0);
+    super(570, 0);
     sprite = new Spritemap("graphics/player_1.png", 10, 17);
     layer = -1;
 
