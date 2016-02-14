@@ -23,6 +23,7 @@ class Button extends Entity {
     addGraphic(text);
 
     setHitboxTo(sprite);
+    text.y += 5;
 
     layer = -10;
   }
